@@ -36,7 +36,7 @@ nvimtree.setup({
 	},
 	-- open tree on right side
 	view = {
-		side = "right",
+		side = "left",
 	},
 	-- 	git = {
 	-- 		ignore = false,
