@@ -11,6 +11,6 @@ config.font_size = 16.0
 config.enable_tab_bar = false
 config.macos_window_background_blur = 30
 config.window_background_opacity = 1.0
-
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 return config
