@@ -27,8 +27,12 @@ return {
 		}
 
         dashboard.section.buttons.val = {
-            dashboard.button("<leader> ff", "   Find File", "<cmd>Telescope find_files<CR>"),
-            dashboard.button("<leader> ft", "   Find Text", "<cmd>Telescope live_grep<CR>"),
+            dashboard.button("f", "  Find file", "<cmd>Telescope find_files <cr>"),
+            dashboard.button("t", "󰙩  Find text", "<cmd>Telescope live_grep <cr>"),
+            dashboard.button("p", "  Find project", "<cmd>lua require('telescope').extensions.projects.projects() <cr>"),
+            dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles <cr>"),
+            dashboard.button("c", "  Config", "<cmd>e ~/.config/nvim/init.lua <cr>"),
+            dashboard.button("q", "  Quit", "<cmd>qa <cr>"),
         }
 
 		dashboard.section.footer.val = function()
