@@ -31,3 +31,4 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.opt.ignorecase = true
+vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
