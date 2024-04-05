@@ -1,19 +1,30 @@
 return {
-    {
-        "tpope/vim-fugitive",
-    },
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-            local wk = require "which-key"
+	{
+		"tpope/vim-fugitive",
+		event = { "BufReadPre", "BufNewFile" },
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local gs = require("gitsigns")
+			local wk = require("which-key")
+			gs.setup()
 
-            wk.register {
-                ["<leader>g"] = { name = "+Gitsigns" },
-                ["<leader>gb"] = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
-                ["<leader>gp"] = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
-                ["<leader>gr"] = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
-            }
-        end,
-    },
+			vim.keymap.set("n", "]h", gs.next_hunk, { desc = "Next Hunk" })
+			vim.keymap.set("n", "[h", gs.prev_hunk, { desc = "Prev Hunk" })
+
+			wk.register({
+				["<leader>g"] = { name = "+Gitsigns" },
+				["<leader>gb"] = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame" },
+				["<leader>gp"] = { "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk" },
+				["<leader>gr"] = { "<cmd>Gitsigns reset_hunk<cr>", "Reset hunk" },
+
+				["<leader>gR"] = { "<cmd>Gitsigns reset_buffer<cr>", "Reset buffer" },
+				["<leader>gs"] = { "<cmd>Gitsigns stage_buffer<cr>", "Stage buffer" },
+
+				["<leader>gd"] = { "<cmd>Gitsigns diffthis<cr>", "Diff this" },
+			})
+		end,
+	},
 }
