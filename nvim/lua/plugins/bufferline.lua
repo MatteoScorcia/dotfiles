@@ -10,7 +10,7 @@ return {
 				diagnostics = "nvim_lsp",
 				hover = {
 					enabled = true,
-					delay = 200,
+					delay = 0,
 					reveal = { "close" },
 				},
 				buffer_close_icon = "×",
