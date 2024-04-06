@@ -8,6 +8,14 @@ return {
 			options = {
 				style_preset = bufferline.style_preset.minimal,
 				diagnostics = "nvim_lsp",
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "File Explorer",
+						highlight = "Directory",
+						text_align = "left",
+					},
+				},
 				hover = {
 					enabled = true,
 					delay = 0,
