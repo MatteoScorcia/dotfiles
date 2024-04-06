@@ -9,6 +9,7 @@ return {
 			mason.setup({})
 			mason_lspconfig.setup({
 				ensure_installed = {
+					-- misc
 					"lua_ls",
 					"clangd",
 					"gopls",
@@ -24,43 +25,11 @@ return {
 		end,
 	},
 	{
-		"nvimtools/none-ls.nvim",
-		config = function()
-			local null_ls = require("null-ls")
-			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-			null_ls.setup({
-				on_attach = function(client, bufnr)
-					if client.supports_method("textDocument/formatting") then
-						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							group = augroup,
-							buffer = bufnr,
-							callback = function()
-								vim.lsp.buf.format({ async = false })
-							end,
-						})
-					end
-				end,
-
-				sources = {
-					-- lua
-					null_ls.builtins.formatting.stylua,
-					-- go
-					null_ls.builtins.formatting.gofmt,
-					-- jabascript
-					null_ls.builtins.formatting.prettier,
-				},
-			})
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 		},
-		lazy = false,
 		config = function()
 			local lspconfig = require("lspconfig")
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -89,13 +58,9 @@ return {
 				opts.desc = "Show documentation for what is under cursor"
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-				opts.desc = "Reformat Buffer"
-				vim.keymap.set("n", "gf", vim.lsp.buf.format, opts)
-
 				wk.register({
 					["<leader>l"] = { name = "+Lsp" },
 					["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-					["<leader>lf"] = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format" },
 					["<leader>li"] = { "<cmd>LspInfo<CR>", "Info" },
 					["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
 					["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostic" },
