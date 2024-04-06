@@ -17,7 +17,7 @@ return {
 			sections = {
 				lualine_a = { "branch", "diagnostic" },
 				lualine_b = {},
-				lualine_c = { "buffers" },
+				lualine_c = { "filename" },
 
 				lualine_x = {
 					{
@@ -26,10 +26,8 @@ return {
 						color = { fg = "#ff9e64" },
 					},
 					{ "encoding" },
-					{ "fileformat" },
-					{ "filetype" },
 				},
-				lualine_y = { "location" },
+				lualine_y = { "progress", "location" },
 				lualine_z = { "mode" },
 			},
 		})
