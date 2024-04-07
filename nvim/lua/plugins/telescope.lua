@@ -14,13 +14,13 @@ return {
 			wk.register({
 				["<leader>f"] = { name = "+File" },
 				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<CR>", "Find buffers" },
-				["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-				["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
+				["<leader>fg"] = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
+				["<leader>ff"] = { "<cmd>Telescope find_files<CR>", "Find files" },
 				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", "Projects" },
-				["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-				["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-				["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
-				["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+				["<leader>ft"] = { "<cmd>Telescope live_grep<CR>", "Find Text" },
+				["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Help" },
+				["<leader>fl"] = { "<cmd>Telescope resume<CR>", "Last Search" },
+				["<leader>fr"] = { "<cmd>Telescope oldfiles<CR>", "Recent File" },
 			})
 
 			local actions = require("telescope.actions")
