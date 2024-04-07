@@ -13,10 +13,10 @@ return {
 			local wk = require("which-key")
 			wk.register({
 				["<leader>f"] = { name = "+File" },
-				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find buffers" },
+				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<CR>", "Find buffers" },
 				["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 				["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.project()<cr>", "Projects" },
+				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", "Projects" },
 				["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 				["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
 				["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },

@@ -32,7 +32,7 @@ return {
 			dashboard.button(
 				"p",
 				"  Find project",
-				"<cmd>lua require('telescope').extensions.projects.project() <cr>"
+				"<cmd>lua require('telescope').extensions.project.project() <cr>"
 			),
 			dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles <cr>"),
 			dashboard.button("c", "  Config", "<cmd>e ~/.config/nvim/init.lua <cr>"),
