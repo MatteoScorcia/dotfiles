@@ -26,14 +26,18 @@ return {
 			[[                                                                       ]],
 		}
 
-        dashboard.section.buttons.val = {
-            dashboard.button("f", "  Find file", "<cmd>Telescope find_files <cr>"),
-            dashboard.button("t", "󰙩  Find text", "<cmd>Telescope live_grep <cr>"),
-            dashboard.button("p", "  Find project", "<cmd>lua require('telescope').extensions.projects.projects() <cr>"),
-            dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles <cr>"),
-            dashboard.button("c", "  Config", "<cmd>e ~/.config/nvim/init.lua <cr>"),
-            dashboard.button("q", "  Quit", "<cmd>qa <cr>"),
-        }
+		dashboard.section.buttons.val = {
+			dashboard.button("f", "  Find file", "<cmd>Telescope find_files <cr>"),
+			dashboard.button("t", "󰙩  Find text", "<cmd>Telescope live_grep <cr>"),
+			dashboard.button(
+				"p",
+				"  Find project",
+				"<cmd>lua require('telescope').extensions.projects.project() <cr>"
+			),
+			dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles <cr>"),
+			dashboard.button("c", "  Config", "<cmd>e ~/.config/nvim/init.lua <cr>"),
+			dashboard.button("q", "  Quit", "<cmd>qa <cr>"),
+		}
 
 		dashboard.section.footer.val = function()
 			local datetime = os.date("  %m-%d-%Y   %H:%M:%S")

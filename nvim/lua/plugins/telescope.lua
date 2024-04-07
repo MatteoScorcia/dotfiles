@@ -5,25 +5,25 @@ return {
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-            { "ahmedkhalf/project.nvim", event = "VeryLazy" }
+			{ "nvim-telescope/telescope-project.nvim" },
 		},
 		config = function()
-            require("telescope").load_extension('projects')
+			require("telescope").load_extension("project")
 
 			local wk = require("which-key")
 			wk.register({
-                ["<leader>f"] = { name = "+File" },
+				["<leader>f"] = { name = "+File" },
 				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find buffers" },
 				["<leader>fg"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 				["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.project()<cr>", "Projects" },
 				["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 				["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
 				["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
 				["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
 			})
 
-            local actions = require "telescope.actions"
+			local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
 					mappings = {
@@ -34,7 +34,7 @@ return {
 							["<C-j>"] = actions.move_selection_next,
 							["<C-k>"] = actions.move_selection_previous,
 
-                            ["<C-d>"] = actions.delete_buffer + actions.move_to_top
+							["<C-d>"] = actions.delete_buffer + actions.move_to_top,
 						},
 						n = {
 							["<esc>"] = actions.close,

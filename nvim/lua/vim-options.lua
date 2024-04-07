@@ -26,6 +26,7 @@ vim.opt.guicursor = {
 	"i-ci:ver25-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 	"r:hor50-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 }
+vim.opt.signcolumn = "auto:4"
 
 vim.opt.mouse = "a"
 vim.cmd("set mousemoveevent")
