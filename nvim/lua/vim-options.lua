@@ -15,9 +15,9 @@ vim.opt.showmode = false
 vim.opt.smartcase = true
 vim.opt.swapfile = false
 
-vim.opt.updatetime = 250
 vim.o.timeout = true
-vim.opt.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 500
 vim.opt.inccommand = "split"
 
 vim.opt.termguicolors = true
