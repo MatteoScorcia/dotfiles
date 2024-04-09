@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Catppuccin Macchiato"
-config.font = wezterm.font("JetBrains Mono", { weight = "Medium" })
+config.font = wezterm.font("JetBrains Mono", { weight = "Medium", italic = false })
 config.font_size = 16.0
 config.enable_tab_bar = false
 config.macos_window_background_blur = 30
