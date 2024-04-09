@@ -28,7 +28,7 @@ return {
 					{ "encoding" },
 				},
 				lualine_y = { "progress", "location" },
-				lualine_z = { "mode" },
+				lualine_z = {},
 			},
 		})
 	end,

@@ -55,6 +55,21 @@ return {
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local wk = require("which-key")
 
+			vim.diagnostic.config({
+				virtual_text = true,
+				update_in_insert = false,
+				underline = true,
+				severity_sort = true,
+				float = {
+					focusable = true,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			})
+
 			wk.register({
 				["<leader>l"] = { name = "+Lsp" },
 			})

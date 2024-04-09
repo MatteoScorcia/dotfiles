@@ -9,7 +9,6 @@ vim.g.maplocalleader = " "
 
 vim.wo.number = true
 vim.opt.clipboard = "unnamedplus"
-vim.g.background = "light"
 vim.opt.showmode = false
 
 vim.opt.smartcase = true
@@ -26,10 +25,10 @@ vim.opt.guicursor = {
 	"i-ci:ver25-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 	"r:hor50-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 }
-vim.opt.signcolumn = "auto:4"
+-- vim.opt.signcolumn = "auto:4"
 
-vim.opt.mouse = "a"
-vim.cmd("set mousemoveevent")
+vim.opt.mouse = "a" -- allow the mouse to be used in neovim
+vim.cmd("set mousemoveevent") -- allow mouse move event
 
 vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>")
