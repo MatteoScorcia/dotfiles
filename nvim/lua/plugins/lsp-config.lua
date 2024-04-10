@@ -55,7 +55,30 @@ return {
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local wk = require("which-key")
 
+			-- remove from nvim 0.10
+			local function sign_define(args)
+				vim.fn.sign_define(args.name, {
+					texthl = args.name,
+					text = args.text,
+					numhl = "",
+				})
+			end
+
+			sign_define({ name = "DiagnosticSignError", text = "" })
+			sign_define({ name = "DiagnosticSignWarn", text = "" })
+			sign_define({ name = "DiagnosticSignHint", text = "" })
+			sign_define({ name = "DiagnosticSignInfo", text = "" })
+
 			vim.diagnostic.config({
+				-- from nvim 0.10
+				-- signs = {
+				-- 	text = {
+				-- 		[vim.diagnostic.severity.ERROR] = "",
+				-- 		[vim.diagnostic.severity.WARN] = "",
+				-- 		[vim.diagnostic.severity.HINT] = "",
+				-- 		[vim.diagnostic.severity.INFO] = "",
+				-- 	},
+				-- },
 				virtual_text = true,
 				update_in_insert = false,
 				underline = true,
@@ -81,8 +104,6 @@ return {
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(event)
-					-- Buffer local mappings.
-					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = event.buf, silent = true }
 
 					-- set keybinds

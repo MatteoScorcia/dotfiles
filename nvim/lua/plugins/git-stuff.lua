@@ -5,53 +5,118 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "BufEnter",
+		cmd = "Gitsigns",
 		opts = {
 			on_attach = function(bufnr)
-				local gs = package.loaded.gitsigns
+				local gs = require("gitsigns")
 				local wk = require("which-key")
 
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
-				end
-
 				wk.register({
-					["<leader>g"] = { name = "+Gitsigns" },
+					["<leader>g"] = { name = "+Git" },
+					["<leader>h"] = { name = "+Hunk" },
 				})
 
-				-- Navigation
-				map("n", "]h", gs.next_hunk, "Next Hunk")
-				map("n", "[h", gs.prev_hunk, "Prev Hunk")
+				local keymap = vim.keymap -- for conciseness
+				local opts = { buffer = bufnr }
 
-				-- Actions
-				map("n", "<leader>hs", gs.stage_hunk, "Stage hunk")
-				map("n", "<leader>hr", gs.reset_hunk, "Reset hunk")
-				map("v", "<leader>hs", function()
+				-- Hunk Navigation
+				opts.desc = "Prev Hunk"
+				keymap.set("n", "<leader>hk", gs.prev_hunk, opts)
+
+				opts.desc = "Next Hunk"
+				keymap.set("n", "<leader>hj", gs.next_hunk, opts)
+
+				-- Hunk Actions
+				opts.desc = "Preview Hunk"
+				keymap.set("n", "<leader>hp", gs.preview_hunk, opts)
+
+				opts.desc = "Stage Hunk"
+				keymap.set("n", "<leader>hs", gs.stage_hunk, opts)
+
+				opts.desc = "Reset Hunk"
+				keymap.set("n", "<leader>hr", gs.reset_hunk, opts)
+
+				opts.desc = "Reset Hunk"
+				keymap.set("v", "<leader>hs", function()
 					gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-				end, "Stage hunk")
-				map("v", "<leader>hr", function()
+				end, opts)
+
+				opts.desc = "Reset Hunk"
+				keymap.set("v", "<leader>hr", function()
 					gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-				end, "Reset hunk")
+				end, opts)
 
-				map("n", "<leader>gS", gs.stage_buffer, "Stage buffer")
-				map("n", "<leader>gr", gs.reset_buffer, "Reset buffer")
+				opts.desc = "Stage Hunk"
+				keymap.set("n", "<leader>hu", gs.undo_stage_hunk, opts)
 
-				map("n", "<leader>gu", gs.undo_stage_hunk, "Undo stage hunk")
+				-- Git Actions
+				opts.desc = "Stage Buffer"
+				keymap.set("n", "<leader>gS", gs.stage_buffer, opts)
 
-				map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
+				opts.desc = "Reset Buffer"
+				keymap.set("n", "<leader>gr", gs.reset_buffer, opts)
 
-				map("n", "<leader>gb", function()
+				opts.desc = "Blame Line"
+				keymap.set("n", "<leader>gb", function()
 					gs.blame_line({ full = true })
-				end, "Blame line")
-				map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle line blame")
+				end, opts)
 
-				map("n", "<leader>gd", gs.diffthis, "Diff this")
-				map("n", "<leader>gD", function()
-					gs.diffthis("~")
-				end, "Diff this ~")
+				opts.desc = "Toggle Blame line"
+				keymap.set("n", "<leader>gB", gs.toggle_current_line_blame, opts)
 
-				-- Text object
-				map({ "o", "x" }, "ih", "<cmd><C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
+				opts.desc = "Diff this"
+				keymap.set("n", "<leader>gd", gs.diffthis, opts)
+
+				gs.setup({
+					signs = {
+						add = {
+							hl = "GitSignsAdd",
+							text = "┃",
+							numhl = "GitSignsAddNr",
+							linehl = "GitSignsAddLn",
+						},
+						change = {
+							hl = "GitSignsChange",
+							text = "┃",
+							numhl = "GitSignsChangeNr",
+							linehl = "GitSignsChangeLn",
+						},
+						delete = {
+							hl = "GitSignsDelete",
+							text = "",
+							numhl = "GitSignsDeleteNr",
+							linehl = "GitSignsDeleteLn",
+						},
+						topdelete = {
+							hl = "GitSignsDelete",
+							text = "",
+							numhl = "GitSignsDeleteNr",
+							linehl = "GitSignsDeleteLn",
+						},
+						changedelete = {
+							hl = "GitSignsChange",
+							text = "┃",
+							numhl = "GitSignsChangeNr",
+							linehl = "GitSignsChangeLn",
+						},
+					},
+					watch_gitdir = {
+						interval = 1000,
+						follow_files = true,
+					},
+					attach_to_untracked = true,
+					current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+					update_debounce = 200,
+					max_file_length = 40000,
+					preview_config = {
+						border = "rounded",
+						style = "minimal",
+						relative = "cursor",
+						row = 0,
+						col = 1,
+					},
+				})
 			end,
 		},
 	},
