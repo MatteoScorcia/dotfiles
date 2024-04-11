@@ -63,7 +63,6 @@ return {
 					numhl = "",
 				})
 			end
-
 			sign_define({ name = "DiagnosticSignError", text = "" })
 			sign_define({ name = "DiagnosticSignWarn", text = "" })
 			sign_define({ name = "DiagnosticSignHint", text = "" })
