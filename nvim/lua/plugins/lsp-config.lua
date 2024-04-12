@@ -10,7 +10,11 @@ return {
 			local mason_lspconfig = require("mason-lspconfig")
 			local mason_tool_installer = require("mason-tool-installer")
 
-			mason.setup({})
+			mason.setup({
+				ui = {
+					border = "rounded",
+				},
+			})
 
 			mason_lspconfig.setup({
 				ensure_installed = {
@@ -55,7 +59,54 @@ return {
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 			local wk = require("which-key")
 
-			-- remove from nvim 0.10
+			-- lsp leader keymaps
+			wk.register({
+				["<leader>l"] = { name = "+Lsp" },
+				["<leader>li"] = { "<cmd>LspInfo<CR>", "Info" },
+				["<leader>lr"] = { "<cmd>LspRestart<CR>", "Restart" },
+				["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+				["<leader>r"] = { "<cdm>lua vim.lsp.buf.rename()<CR>", "Rename" },
+				["<leader>D"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Buffer diagnostics" },
+				["<leader>d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line disgnostics" },
+				["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
+				["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev diagnostic" },
+				["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Quickfix" },
+				["<leader>lh"] = {
+					"<cmd>lua vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), not vim.lsp.inlay_hint.is_enabled(vim.api.nvim_get_current_buf()))<CR>",
+					"Hints",
+				},
+			})
+
+			wk.register({
+				["<leader>l"] = { name = "+Lsp" },
+				["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action", mode = "v" },
+			})
+
+			-- lsp  goto keymaps
+			local function lsp_keymaps(bufnr)
+				local opts = { noremap = true, silent = true }
+				local keymap = vim.api.nvim_buf_set_keymap
+
+				opts.desc = "Go to declaration"
+				keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+
+				opts.desc = "Show LSP definitions"
+				keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+
+				opts.desc = "Show LSP type definitions"
+				keymap(bufnr, "n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+
+				opts.desc = "Show documentation on hover"
+				keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+
+				opts.desc = "Show LSP implementations"
+				keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+
+				opts.desc = "Show LSP references"
+				keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+			end
+
+			-- todo: remove from nvim 0.10
 			local function sign_define(args)
 				vim.fn.sign_define(args.name, {
 					texthl = args.name,
@@ -92,75 +143,37 @@ return {
 				},
 			})
 
-			wk.register({
-				["<leader>l"] = { name = "+Lsp" },
-			})
-
 			-- used to enable autocompletion (assign to every lsp server config)
 			local capabilities = cmp_nvim_lsp.default_capabilities()
 
-			local keymap = vim.keymap -- for conciseness
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = function(event)
-					local opts = { buffer = event.buf, silent = true }
+			-- on_attach function (assign to every lsp server config)
+			local on_attach = function(client, bufnr)
+				lsp_keymaps(bufnr)
 
-					-- set keybinds
-					opts.desc = "Show LSP references"
-					keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+				if client.supports_method("textDocument/inlayHint") then
+					vim.lsp.inlay_hint.enable(bufnr, true)
+				end
+			end
 
-					opts.desc = "Go to declaration"
-					keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+			-- styiling lsp handlers
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+			vim.lsp.handlers["textDocument/signatureHelp"] =
+				vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-					opts.desc = "Show LSP definitions"
-					keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-
-					opts.desc = "Show LSP implementations"
-					keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-
-					opts.desc = "Show LSP type definitions"
-					keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
-
-					opts.desc = "Code actions"
-					keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
-
-					opts.desc = "Show buffer diagnostics"
-					keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-					opts.desc = "Show line diagnostics"
-					keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-					opts.desc = "Go to previous diagnostic"
-					keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-					opts.desc = "Go to next diagnostic"
-					keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-					opts.desc = "Show documentation for what is under cursor"
-					keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-					opts.desc = "Smart rename"
-					keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-
-					opts.desc = "Restart LSP"
-					keymap.set("n", "<leader>lr", ":LspRestart<CR>", opts)
-
-					opts.desc = "Info LSP"
-					keymap.set("n", "<leader>li", ":LspInfo<CR>", opts)
-				end,
-			})
-
+			-- lspconfig setup
 			mason_lspconfig.setup_handlers({
 				-- default handler for installed server
 				function(server_name)
 					lspconfig[server_name].setup({
 						capabilities = capabilities,
+						on_attach = on_attach,
 					})
 				end,
 				["lua_ls"] = function()
 					-- configure lua server (with special settings)
 					lspconfig["lua_ls"].setup({
 						capabilities = capabilities,
+						on_attach = on_attach,
 						settings = {
 							Lua = {
 								-- make the language server recognize "vim" global

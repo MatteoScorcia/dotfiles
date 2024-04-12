@@ -20,12 +20,14 @@ return {
 					["ot"] = "noop",
 				},
 			},
-			default_component_configs = {
-				filesystem = {
-					follow_current_file = {
-						enabled = true,
-						leave_dirs_open = false,
-					},
+			filesystem = {
+				filtered_times = {
+					hide_dotfiles = false,
+					hide_hidden = false,
+				},
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = false,
 				},
 			},
 		})

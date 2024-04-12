@@ -12,6 +12,9 @@ return {
 			options = {
 				style_preset = bufferline.style_preset.minimal,
 				diagnostics = "nvim_lsp",
+				left_mouse_command = "buffer %d",
+				middle_mouse_command = "bdelete! %d",
+				right_mouse_command = nil,
 				offsets = {
 					{
 						filetype = "neo-tree",
