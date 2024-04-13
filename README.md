@@ -1,18 +1,20 @@
 # My configs :)
 
-## htop
+- install wezterm
+- install starship
 
-### Brew requirements
+- do the following brew installs:
 
 `brew install htop`
-
-## nvim
-
-### Brew requirements
+`brew install zsh`
+`brew install tmux`
 
 `brew install nvim`
 `brew install fzf`
 `brew install ripgrep`
+
 `brew install asdf`
-`asdf install nodejs lts`
-`asdf global nodejs lts`
+
+`brew install stow`
+
+- run following command inside dotfiles directory: `stow .`
