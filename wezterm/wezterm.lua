@@ -6,7 +6,10 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.term = "wezterm" -- https://wezfurlong.org/wezterm/config/lua/config/term.html
+-- https://wezfurlong.org/wezterm/config/lua/config/term.html
+-- https://wezfurlong.org/wezterm/faq.html?h=underline#how-do-i-enable-undercurl-curly-underlines
+config.term = "wezterm"
+
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium", italic = false })
 config.font_size = 16.0

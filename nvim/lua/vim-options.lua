@@ -26,8 +26,8 @@ vim.opt.guicursor = {
 	"r:hor50-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 }
 -- LSP Undercurl (Terminal specific option)
--- vim.cmd([[let &t_Cs = "\e[4:3m"]])
--- vim.cmd([[let &t_Ce = "\e[4:0m"]])
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.mousemoveevent = true -- allow mouse move event
