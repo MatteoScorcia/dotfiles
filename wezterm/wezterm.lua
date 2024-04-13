@@ -6,6 +6,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+config.term = "wezterm" -- https://wezfurlong.org/wezterm/config/lua/config/term.html
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium", italic = false })
 config.font_size = 16.0

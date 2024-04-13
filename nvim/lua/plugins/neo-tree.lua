@@ -21,13 +21,39 @@ return {
 				},
 			},
 			filesystem = {
-				filtered_times = {
+				filtered_items = {
 					hide_dotfiles = false,
 					hide_hidden = false,
 				},
 				follow_current_file = {
 					enabled = true,
 					leave_dirs_open = false,
+				},
+			},
+			default_component_configs = {
+				diagnostics = {
+					highlights = {
+						-- hint = "DiagnosticSignHint",
+						-- info = "DiagnosticSignInfo",
+						warn = "DiagnosticSignWarn",
+						error = "DiagnosticSignError",
+					},
+				},
+
+				git_status = {
+					symbols = {
+						-- Change type
+						added = "",
+						deleted = "",
+						modified = "",
+						renamed = "",
+						-- Status type
+						untracked = "",
+						ignored = "",
+						unstaged = "",
+						staged = "",
+						conflict = "",
+					},
 				},
 			},
 		})
