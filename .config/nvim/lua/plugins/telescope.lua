@@ -6,6 +6,8 @@ return {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 			{ "nvim-telescope/telescope-project.nvim" },
+			{ "folke/todo-comments.nvim" },
+			{ "folke/trouble.nvim" },
 		},
 		config = function()
 			require("telescope").load_extension("project")
@@ -14,13 +16,13 @@ return {
 			wk.register({
 				["<leader>f"] = { name = "+File" },
 				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<CR>", "Find buffers" },
-				["<leader>fg"] = { "<cmd>Telescope git_branches<CR>", "Checkout branch" },
 				["<leader>ff"] = { "<cmd>Telescope find_files<CR>", "Find files" },
 				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", "Projects" },
-				["<leader>ft"] = { "<cmd>Telescope live_grep<CR>", "Find Text" },
+				["<leader>fs"] = { "<cmd>Telescope live_grep<CR>", "Find string in cwd" },
 				["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Help" },
 				["<leader>fl"] = { "<cmd>Telescope resume<CR>", "Last Search" },
 				["<leader>fr"] = { "<cmd>Telescope oldfiles<CR>", "Recent File" },
+				["<leader>ft"] = { "<cmd>TodoTelescope<CR>", "Find todo" },
 			})
 
 			local actions = require("telescope.actions")

@@ -12,7 +12,6 @@ return {
 				position = "bottom",
 				padding = { 2, 2, 2, 2 },
 			},
-
 		})
 	end,
 }

@@ -71,10 +71,6 @@ return {
 				["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
 				["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev diagnostic" },
 				["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Quickfix" },
-				["<leader>lh"] = {
-					"<cmd>lua vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), not vim.lsp.inlay_hint.is_enabled(vim.api.nvim_get_current_buf()))<CR>",
-					"Hints",
-				},
 			})
 
 			wk.register({
@@ -129,7 +125,7 @@ return {
 				-- 		[vim.diagnostic.severity.INFO] = "",
 				-- 	},
 				-- },
-				virtual_text = true,
+				virtual_text = false,
 				update_in_insert = false,
 				underline = true,
 				severity_sort = true,
