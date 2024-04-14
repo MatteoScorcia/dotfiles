@@ -8,6 +8,7 @@
 `brew install htop`
 `brew install zsh`
 `brew install tmux`
+`brew install zoxide`
 
 `brew install nvim`
 `brew install fzf`
