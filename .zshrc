@@ -122,6 +122,9 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # starshipp
 eval "$(starship init zsh)"
 
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
 # pnpm
 export PNPM_HOME="/Users/matteo/Library/pnpm"
 case ":$PATH:" in
