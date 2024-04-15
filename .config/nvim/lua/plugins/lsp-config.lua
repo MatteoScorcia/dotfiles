@@ -125,7 +125,9 @@ return {
 				-- 		[vim.diagnostic.severity.INFO] = "",
 				-- 	},
 				-- },
-				virtual_text = false,
+				virtual_text = {
+					prefix = "",
+				},
 				update_in_insert = false,
 				underline = true,
 				severity_sort = true,
