@@ -1,27 +1,30 @@
--- leader key options
+-- Leader key options
 vim.keymap.set("n", "<Space>", "")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- tab options
+-- Escape mapping
+vim.keymap.set("i", "kj", "<esc>")
+
+-- Tab options
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
--- cli options
+-- CLI options
 vim.opt.clipboard = "unnamedplus"
 vim.opt.showmode = false
 vim.opt.swapfile = false
 vim.opt.scrolloff = 5
 
--- timeout options
+-- Timeout options
 vim.o.timeout = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 500
 vim.opt.inccommand = "split"
 
--- gui options
+-- GUI options
 vim.wo.number = true
 vim.opt.termguicolors = true
 vim.opt.guicursor = {
@@ -50,11 +53,11 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.keymap.set("n", "ss", "<cmd>split<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "sv", "<cmd>vsplit<CR>", { noremap = true, silent = true })
 
--- search options
+-- Search options
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.opt.ignorecase = true
 
--- highlight on yank
+-- Highlight on yank
 vim.cmd([[au TextYankPost * silent! lua vim.highlight.on_yank()]])
