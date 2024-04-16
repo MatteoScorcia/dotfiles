@@ -12,11 +12,12 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
--- CLI options
+-- System options
+vim.opt.backup = false
+vim.opt.writebackup = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.showmode = false
 vim.opt.swapfile = false
-vim.opt.scrolloff = 5
+vim.opt.undofile = true
 
 -- Timeout options
 vim.o.timeout = true
@@ -26,7 +27,16 @@ vim.opt.inccommand = "split"
 
 -- GUI options
 vim.wo.number = true
+vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
+vim.opt.signcolumn = "yes"
+vim.opt.title = false
+vim.opt.cmdheight = 1
+vim.opt.showmode = false
+vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.termguicolors = true
+vim.opt.guifont = "*"
 vim.opt.guicursor = {
 	"n-v-c:block-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
 	"i-ci:ver25-Cursor/lCursor-blinkwait0-blinkon50-blinkoff50",
