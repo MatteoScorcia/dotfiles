@@ -1,11 +1,8 @@
-# amend $PATH so that homebrew tools take precedence over others.
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-
 # Home extension $PATH
-export PATH="$HOME/.local/bin":$PATH
+export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # export term env (nvim and ~/.terminfo)
 export TERM=wezterm
@@ -76,7 +73,7 @@ export TERM=wezterm
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf)
+plugins=(asdf zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,11 +100,11 @@ alias vim="nvim"
 alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # Source Brew plugins
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
 # starship
 eval "$(starship init zsh)"
@@ -121,4 +118,3 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
