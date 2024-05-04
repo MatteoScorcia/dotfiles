@@ -12,7 +12,7 @@ return {
 
 			require("neoscroll").setup({
 				-- All these keys will be mapped to their corresponding default scrolling animation
-				mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb", "C-k", "C-j" },
+				mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
 				hide_cursor = true, -- Hide cursor while scrolling
 				stop_eof = true, -- Stop at <EOF> when scrolling downwards
 				respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
@@ -26,8 +26,6 @@ return {
 			require("neoscroll.config").set_mappings({
 				["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } },
 				["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "250" } },
-				["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } },
-				["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "250" } },
 				["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "450" } },
 				["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "450" } },
 				["<C-y>"] = { "scroll", { "-0.10", "false", "100" } },
