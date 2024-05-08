@@ -40,7 +40,7 @@ return {
 					"isort", -- python formatter
 					"black", -- python formatter
 					"pylint", -- python linter
-					"eslint_d", -- javascipt/typescript linter
+					"eslint", -- javascipt/typescript linter
 				},
 			})
 		end,
