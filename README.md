@@ -9,6 +9,7 @@
 `brew install zsh`
 `brew install tmux`
 `brew install zoxide`
+`brew install delta`
 
 `brew install nvim`
 `brew install fzf`

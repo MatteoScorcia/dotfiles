@@ -39,8 +39,8 @@ return {
 					"stylua", -- lua formatter
 					"isort", -- python formatter
 					"black", -- python formatter
-					"pylint",
-					"eslint_d",
+					"pylint", -- python linter
+					"eslint_d", -- javascipt/typescript linter
 				},
 			})
 		end,
@@ -65,7 +65,7 @@ return {
 				["<leader>li"] = { "<cmd>LspInfo<CR>", "Info" },
 				["<leader>lr"] = { "<cmd>LspRestart<CR>", "Restart" },
 				["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-				["<leader>r"] = { "<cdm>lua vim.lsp.buf.rename()<CR>", "Rename" },
+				["<leader>r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 				["<leader>D"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Buffer diagnostics" },
 				["<leader>d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line disgnostics" },
 				["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
