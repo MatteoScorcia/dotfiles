@@ -20,9 +20,10 @@ return {
 				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", "Projects" },
 				["<leader>fs"] = { "<cmd>Telescope live_grep<CR>", "Find string in cwd" },
 				["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Help" },
-				["<leader>fl"] = { "<cmd>Telescope resume<CR>", "Last Search" },
-				["<leader>fr"] = { "<cmd>Telescope oldfiles<CR>", "Recent File" },
+				["<leader>fl"] = { "<cmd>Telescope resume<CR>", "Last search" },
+				["<leader>fr"] = { "<cmd>Telescope oldfiles<CR>", "Recent file" },
 				["<leader>ft"] = { "<cmd>TodoTelescope<CR>", "Find todo" },
+				["<leader>fm"] = { "<cmd>Telescope marks<CR>", "Find marks" },
 			})
 
 			local actions = require("telescope.actions")
@@ -62,6 +63,11 @@ return {
 					find_files = {
 						theme = "dropdown",
 						previewer = false,
+					},
+
+					marks = {
+						theme = "dropdown",
+						initial_mode = "normal",
 					},
 
 					buffers = {

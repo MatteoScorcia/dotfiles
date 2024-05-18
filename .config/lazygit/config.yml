@@ -1,6 +1,10 @@
+gui:
+  statusPanelView: "allBranchesLog"
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
   branchLogCmd: "git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --oneline"
   allBranchesLogCmd: "git log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --oneline"
+  log:
+    showWholeGraph: true
