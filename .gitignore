@@ -1,3 +1,4 @@
 .DS_Store
 .config/configstore
 .config/simple-update-notifier
+.config/tmux/plugins
