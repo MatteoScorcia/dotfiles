@@ -10,6 +10,7 @@
 `brew install tmux`
 `brew install zoxide`
 `brew install delta`
+`brew install eza`
 
 `brew install nvim`
 `brew install fzf`

@@ -1,5 +1,9 @@
 # Home extension $PATH
-export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
+if [[ $(uname) == "Darwin" ]]; then
+    export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH # MacOS
+elif command -v apt > /dev/null; then
+    export PATH=$PATH:/opt/nvim-linux64/bin # Debian
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -9,18 +13,6 @@ export TERM=wezterm
 
 # tell lazygit this is home
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,23 +52,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf)
+plugins=(asdf zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,15 +81,22 @@ alias pn="pnpm"
 alias vim="nvim"
 alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 
-# Source Brew plugins
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Source plugins todo: deprecate use only plugins oh-my-zsh
+if [[ $(uname) == "Darwin" ]]; then
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # fzf
-eval "$(fzf --zsh)"
+if [[ $(uname) == "Darwin" ]]; then
+    eval "$(fzf --zsh)" # MacOS
+elif command -v apt > /dev/null; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # Debian (git clone)
+fi
 
 # starship
 eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
