@@ -81,12 +81,6 @@ alias pn="pnpm"
 alias vim="nvim"
 alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
 
-# Source plugins todo: deprecate use only plugins oh-my-zsh
-if [[ $(uname) == "Darwin" ]]; then
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
 # fzf
 if [[ $(uname) == "Darwin" ]]; then
     eval "$(fzf --zsh)" # MacOS
