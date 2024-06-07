@@ -14,6 +14,9 @@ export TERM=wezterm
 # tell lazygit this is home
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# colorized man pages with bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
