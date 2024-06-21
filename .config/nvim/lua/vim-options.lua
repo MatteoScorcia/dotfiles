@@ -9,6 +9,9 @@ vim.keymap.set("i", "kj", "<esc>")
 -- Write mapping
 vim.keymap.set("n", "<c-s>", "<cmd>:w<CR>", { noremap = true, silent = true })
 
+-- Delete mapping
+vim.keymap.set("n", "x", '"_x', { noremap = true, silent = true })
+
 -- Tab options
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
@@ -55,10 +58,10 @@ vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.mousemoveevent = true -- allow mouse move event
 
 -- Better window navigation
-vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", "<cmd>wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>")
+vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<c-h>", "<cmd>wincmd h<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>", { noremap = true, silent = true })
 
 -- Better window splits
 vim.opt.splitbelow = true -- Put new windows below current
@@ -69,7 +72,7 @@ vim.keymap.set("n", "sv", "<cmd>vsplit<CR>", { noremap = true, silent = true })
 -- Search options
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { noremap = true, silent = true })
 vim.opt.ignorecase = true
 
 -- Highlight on yank
