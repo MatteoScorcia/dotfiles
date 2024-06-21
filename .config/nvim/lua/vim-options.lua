@@ -6,6 +6,9 @@ vim.g.maplocalleader = " "
 -- Escape mapping
 vim.keymap.set("i", "kj", "<esc>")
 
+-- Write mapping
+vim.keymap.set("n", "<c-s>", "<cmd>:w<CR>", { noremap = true, silent = true })
+
 -- Tab options
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
