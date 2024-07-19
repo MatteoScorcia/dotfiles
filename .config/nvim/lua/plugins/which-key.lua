@@ -7,7 +7,7 @@ return {
 	},
 	config = function()
 		require("which-key").setup({
-			window = {
+			win = {
 				border = "rounded",
 				position = "bottom",
 				padding = { 2, 2, 2, 2 },

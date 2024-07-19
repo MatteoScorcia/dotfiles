@@ -11,8 +11,8 @@ return {
 	},
 	config = function()
 		local wk = require("which-key")
-		wk.register({
-			["<leader>x"] = { name = "+Trouble" },
+		wk.add({
+			{ "<leader>x", group = "Trouble" },
 		})
 	end,
 }
