@@ -1,46 +1,13 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		-- "williamboman/mason-lspconfig.nvim",
-		-- "WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
 			local mason = require("mason")
-			-- local mason_lspconfig = require("mason-lspconfig")
-			-- local mason_tool_installer = require("mason-tool-installer")
-
 			mason.setup({
 				ui = {
 					border = "rounded",
 				},
 			})
-
-			-- mason_lspconfig.setup({
-			-- 	ensure_installed = {
-			-- 		-- misc
-			-- 		"lua_ls",
-			-- 		"clangd",
-			-- 		"gopls",
-			-- 		"zls",
-			-- 		"pylsp",
-			--
-			-- 		-- javascript
-			-- 		"tsserver",
-			-- 		"tailwindcss",
-			-- 		"cssls",
-			-- 		"html",
-			-- 	},
-			-- })
-
-			-- mason_tool_installer.setup({
-			-- 	ensure_installed = {
-			-- 		"prettier", -- prettier formatter
-			-- 		"stylua", -- lua formatter
-			-- 		"isort", -- python formatter
-			-- 		"black", -- python formatter
-			-- 		"pylint", -- python linter
-			-- 		"eslint", -- javascipt/typescript linter
-			-- 	},
-			-- })
 		end,
 	},
 	{
@@ -143,6 +110,22 @@ return {
 				vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 			-- lspconfig setup
+			mason_lspconfig.setup({
+				ensure_installed = {
+					"lua_ls",
+					"clangd",
+					"gopls",
+					"zls",
+					"pyright",
+
+					-- web
+					"tsserver",
+					"tailwindcss",
+					"cssls",
+					"html",
+				},
+			})
+
 			mason_lspconfig.setup_handlers({
 				-- default handler for installed server
 				function(server_name)
@@ -169,23 +152,26 @@ return {
 						},
 					})
 				end,
+				-- configure python server with special settings
+				["pyright"] = function()
+					local util = require("lspconfig/util")
+					local path = util.path
+
+					lspconfig["pyright"].setup({
+						capabilities = capabilities,
+						on_attach = on_attach,
+						before_init = function(_, config)
+							Default_venv_path = path.join(vim.env.HOME, "virtualenvs", "nvim-venv", "bin", "python")
+							config.settings.python.pythonPath = Default_venv_path
+						end,
+					})
+				end,
 				-- configure eslint server with special settings
 				["eslint"] = function()
 					lspconfig["eslint"].setup({
 						capabilities = capabilities,
 						on_attach = function(client, bufnr)
 							on_attach(client, bufnr)
-
-							-- provides an `EslintFixAll` command that is used used to fix a document on save
-							-- todo: doesnt' work
-							-- vim.api.nvim_create_autocmd("BufWritePre", {
-							-- 	pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
-							-- 	buffer = bufnr,
-							-- 	-- command = "EslintFixAll",
-							-- 	callback = function(ev)
-							-- 		print(string.format("event fired: s", vim.inspect(ev)))
-							-- 	end,
-							-- })
 						end,
 					})
 				end,
