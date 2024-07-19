@@ -116,7 +116,12 @@ return {
 					"clangd",
 					"gopls",
 					"zls",
+
+					-- python
 					"pyright",
+					"pylint",
+					"black",
+					"isort",
 
 					-- web
 					"tsserver",
@@ -150,20 +155,6 @@ return {
 								},
 							},
 						},
-					})
-				end,
-				-- configure python server with special settings
-				["pyright"] = function()
-					local util = require("lspconfig/util")
-					local path = util.path
-
-					lspconfig["pyright"].setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						before_init = function(_, config)
-							Default_venv_path = path.join(vim.env.HOME, "virtualenvs", "nvim-venv", "bin", "python")
-							config.settings.python.pythonPath = Default_venv_path
-						end,
 					})
 				end,
 				-- configure eslint server with special settings
