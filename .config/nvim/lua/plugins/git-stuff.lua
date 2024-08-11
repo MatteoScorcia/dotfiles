@@ -11,9 +11,9 @@ return {
 			local wk = require("which-key")
 			local gs = require("gitsigns")
 
-			wk.register({
-				["<leader>g"] = { name = "+Git" },
-				["<leader>h"] = { name = "+Hunk" },
+			wk.add({
+				{ "<leader>g", group = "Git" },
+				{ "<leader>h", group = "Hunk" },
 			})
 
 			gs.setup({

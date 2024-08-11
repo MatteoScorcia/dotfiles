@@ -13,17 +13,23 @@ return {
 			require("telescope").load_extension("project")
 
 			local wk = require("which-key")
-			wk.register({
-				["<leader>f"] = { name = "+File" },
-				["<leader>fb"] = { "<cmd>Telescope buffers previewer=false<CR>", "Find buffers" },
-				["<leader>ff"] = { "<cmd>Telescope find_files<CR>", "Find files" },
-				["<leader>fp"] = { "<cmd>lua require('telescope').extensions.project.project{}<CR>", "Projects" },
-				["<leader>fs"] = { "<cmd>Telescope live_grep<CR>", "Find string in cwd" },
-				["<leader>fh"] = { "<cmd>Telescope help_tags<CR>", "Help" },
-				["<leader>fl"] = { "<cmd>Telescope resume<CR>", "Last search" },
-				["<leader>fr"] = { "<cmd>Telescope oldfiles<CR>", "Recent file" },
-				["<leader>ft"] = { "<cmd>TodoTelescope<CR>", "Find todo" },
-				["<leader>fm"] = { "<cmd>Telescope marks<CR>", "Find marks" },
+			wk.add({
+				{ "<leader>f", group = "File" },
+				{ "<leader>fb", "<cmd>Telescope buffers previewer=false<CR>", desc = "Find buffers" },
+				{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find files" },
+				{
+					"<leader>fp",
+					function()
+						require("telescope").extensions.project.project({})
+					end,
+					desc = "Projects",
+				},
+				{ "<leader>fs", "<cmd>Telescope live_grep<CR>", desc = "Find string in cwd" },
+				{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help" },
+				{ "<leader>fl", "<cmd>Telescope resume<CR>", desc = "Last search" },
+				{ "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Recent file" },
+				{ "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Find todo" },
+				{ "<leader>fm", "<cmd>Telescope marks<CR>", desc = "Find marks" },
 			})
 
 			local actions = require("telescope.actions")

@@ -25,22 +25,22 @@ return {
 			local wk = require("which-key")
 
 			-- lsp leader keymaps
-			wk.register({
-				["<leader>l"] = { name = "+Lsp" },
-				["<leader>li"] = { "<cmd>LspInfo<CR>", "Info" },
-				["<leader>lr"] = { "<cmd>LspRestart<CR>", "Restart" },
-				["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-				["<leader>r"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-				["<leader>D"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Buffer diagnostics" },
-				["<leader>d"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line disgnostics" },
-				["<leader>lj"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
-				["<leader>lk"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev diagnostic" },
-				["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Quickfix" },
+			wk.add({
+				{ "<leader>l", group = "Lsp" },
+				{ "<leader>li", "<cmd>LspInfo<CR>", desc = "Info" },
+				{ "<leader>lr", "<cmd>LspRestart<CR>", desc = "Restart" },
+				{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code action" },
+				{ "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+				{ "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Buffer diagnostics" },
+				{ "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "Line diagnostics" },
+				{ "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next diagnostic" },
+				{ "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev diagnostic" },
+				{ "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "Quickfix" },
 			})
 
-			wk.register({
-				["<leader>l"] = { name = "+Lsp" },
-				["<leader>la"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action", mode = "v" },
+			wk.add({
+				{ "<leader>l", group = "Lsp" },
+				{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code action", mode = "v" },
 			})
 
 			-- lsp  goto keymaps
@@ -119,9 +119,6 @@ return {
 
 					-- python
 					"pyright",
-					"pylint",
-					"black",
-					"isort",
 
 					-- web
 					"tsserver",
