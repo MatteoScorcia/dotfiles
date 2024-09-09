@@ -121,7 +121,7 @@ return {
 					"pyright",
 
 					-- web
-					"tsserver",
+					"ts_ls",
 					"tailwindcss",
 					"cssls",
 					"html",
