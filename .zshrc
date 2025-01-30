@@ -82,7 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 alias pn="pnpm"
 alias vim="nvim"
-alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="eza --color=always --long --icons=always --no-time --no-user --no-permissions"
 
 # fzf
 if [[ $(uname) == "Darwin" ]]; then

@@ -6,14 +6,6 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-local is_linux = function()
-	return wezterm.target_triple:find("linux") ~= nil
-end
-
-local is_macos = function()
-	return wezterm.target_triple:find("darwin") ~= nil
-end
-
 -- .terminfo configs
 -- https://wezfurlong.org/wezterm/config/lua/config/term.html
 -- https://wezfurlong.org/wezterm/faq.html?h=underline#how-do-i-enable-undercurl-curly-underlines
@@ -22,7 +14,7 @@ config.term = "wezterm"
 -- font configs
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium", italic = false })
-config.font_size = is_macos() and 16.0 or 14.0
+config.font_size = 16.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 -- window configs
