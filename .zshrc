@@ -8,9 +8,6 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# export term env (nvim and ~/.terminfo)
-export TERM=wezterm
-
 # tell lazygit this is home
 export XDG_CONFIG_HOME="$HOME/.config"
 
