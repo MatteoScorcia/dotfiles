@@ -1,8 +1,11 @@
 theme = catppuccin-macchiato
-font-size = 18
 cursor-style = block
+font-size = 18
 font-style-italic = false
 font-style-bold-italic = false
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
 window-width = 160
 window-height = 140
 maximize = true
