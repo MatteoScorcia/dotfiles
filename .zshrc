@@ -14,6 +14,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # colorized man pages with bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# setup asdf
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
