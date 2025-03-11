@@ -4,3 +4,6 @@
 
 -- Disable relative numbers
 vim.wo.relativenumber = false
+
+-- Disable animations
+vim.g.snacks_animate = false

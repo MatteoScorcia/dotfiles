@@ -18,6 +18,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
+# multiprocessing fork() behavior
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
