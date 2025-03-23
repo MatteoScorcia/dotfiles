@@ -3,8 +3,9 @@
 - install wezterm
 - install starship
 - install oh my zsh-users
-- `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-- `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+- git clone <https://github.com/zsh-users/zsh-autosuggestions> ~/.zsh/zsh-autosuggestions
+- git clone <https://github.com/zsh-users/zsh-syntax-highlighting> ~/.zsh/zsh-syntax-highlighting
+- git clone <https://github.com/zsh-users/zsh-history-substring-search> ~/.zsh/zsh-history-substring-search
 
 - do the following installs:
 
@@ -22,7 +23,7 @@
 `brew install tmux`
 `git clone https://github.com/tmux-plugins/tpm ~/dotfiles/.config/tmux/plugins/tpm`
 
-`brew install asdf` -> `asdf install nodejs`, `asdf install pnpm`, `asdf install python3`
+`brew install asdf` -> `asdf install nodejs`, `asdf install pnpm`, `asdf install python3`, `asdf install go`
 
 `brew install stow`
 

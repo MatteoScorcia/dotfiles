@@ -5,88 +5,59 @@ elif command -v apt > /dev/null; then
     export PATH=$PATH:/opt/nvim-linux64/bin # Debian
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# tell lazygit this is home
+# Config home location
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# colorized man pages with bat
+# Colorized man pages with bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# setup asdf
+# Setup asdf
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
-# multiprocessing fork() behavior
+# Multiprocessing fork() behavior
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Basic zsh settings (replaces OMZ settings)
+autoload -Uz compinit && compinit # Initialize completions
+zstyle ':completion:*' menu select # Enable menu-style completions
+setopt AUTO_CD                     # `dir` becomes `cd dir`
+setopt EXTENDED_GLOB               # Extended globbing
+setopt INTERACTIVE_COMMENTS        # Allow comments in interactive shell
+setopt APPEND_HISTORY              # Append to history
+setopt SHARE_HISTORY               # Share history between sessions
+setopt HIST_IGNORE_DUPS            # Don't record duplicates
+setopt HIST_REDUCE_BLANKS          # Remove superfluous blanks
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# History settings
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Key bindings
+bindkey -e                         # Emacs key bindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-plugins=(asdf zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# aliases
+# Aliases
 alias pn="pnpm"
 alias vim="nvim"
 alias ls="eza --color=always --long --icons=always --no-time --no-user --no-permissions"
+
+# Editor settings
+export EDITOR='nvim'
+
+# Manually install and source plugins
+# You'll need to clone these repositories:
+# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-history-substring-search
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# asdf
+[[ -f $HOME/.asdf/asdf.sh ]] && source $HOME/.asdf/asdf.sh
 
 # fzf
 if [[ $(uname) == "Darwin" ]]; then
@@ -100,4 +71,3 @@ eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
-
