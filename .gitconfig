@@ -1,36 +1,38 @@
 [user]
 	name = matteoscorcia
-    email = matteoscorcia@gmail.com
+  email = matteoscorcia@gmail.com
 
 [core]
 	editor = nvim
 	autocrlf = input
+  pager = delta
 
 [color]
 	ui = true
 
 [init]
-    defaultBranch = main
+  defaultBranch = main
 
-[core]
-    pager = delta
+[push]
+  autoSetupRemote = true
+  default = current
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [include]
-	path = .config/delta/themes/catppuccin.gitconfig
+  path = .config/delta/themes/catppuccin.gitconfig
 
 [delta]
-    navigate = true
-    dark = true
+  navigate = true
+  dark = true
 	features = catppuccin-macchiato side-by-side
 
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
 
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --oneline
