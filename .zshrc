@@ -15,6 +15,11 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
+# Setup Golang
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+export GO111MODULE=on
+
 # Multiprocessing fork() behavior
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
