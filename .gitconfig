@@ -4,8 +4,9 @@
 
 [core]
 	editor = nvim
-	autocrlf = input
+	autocrlf = input # keep newlines as in input
   pager = delta
+  compression = 9 # trade cpu for network
 
 [color]
 	ui = true
@@ -14,8 +15,12 @@
   defaultBranch = main
 
 [push]
-  autoSetupRemote = true
-  default = current
+  autoSetupRemote = true # easier to push new branches
+  default = current # push only current branch by default
+  followTags = true # push also tags
+
+[fetch]
+  prune = true
 
 [interactive]
   diffFilter = delta --color-only
@@ -28,11 +33,28 @@
   dark = true
 	features = catppuccin-macchiato side-by-side
 
+[blame]
+  coloring = highlightRecent
+  date = relative
+
 [merge]
   conflictstyle = diff3
 
 [diff]
   colorMoved = default
+  context = 3 # less context in diffs
+  renames = copies # detect copies as renames in diffs
+  interHunkContext = 10 # ,erge near hunks in diffs
+
+[status]
+  branch = true
+  short = true
+  showStash = true
+  showUntrackedFiles = all # show individual untracked files
+
+[log]
+  abbrevCommit = true # short commits
+  graphColors = blue,yellow,cyan,magenta,green,red
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --oneline
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
