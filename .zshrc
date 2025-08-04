@@ -9,6 +9,7 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Colorized man pages with bat
+export BAT_THEME="Catppuccin Macchiato"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Setup asdf
