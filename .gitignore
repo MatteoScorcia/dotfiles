@@ -3,3 +3,5 @@
 .config/simple-update-notifier
 .config/tmux/plugins
 .config/nvim/lazy-lock.json
+.wrangler
+qBittorrent
