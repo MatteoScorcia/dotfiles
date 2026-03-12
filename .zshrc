@@ -1,9 +1,13 @@
 # Home extension $PATH
 if [[ $(uname) == "Darwin" ]]; then
-    export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH # MacOS
+    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH=/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
 elif command -v apt > /dev/null; then
-    export PATH=$PATH:/opt/nvim-linux64/bin # Debian
+    export PATH=$PATH:/opt/nvim-linux64/bin
 fi
+
+# Rust/Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Config home location
 export XDG_CONFIG_HOME="$HOME/.config"
