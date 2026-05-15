@@ -1,0 +1,134 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "shift shift": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // --- LazyVim: Telescope / Search ---
+      "space space": "file_finder::Toggle",
+      "space /": "workspace::NewSearch",
+      "space f f": "file_finder::Toggle",
+
+      // --- LazyVim: Neo-tree ---
+      "space e": "workspace::ToggleLeftDock",
+      "space E": "pane::RevealInProjectPanel",
+
+      // --- LazyVim: Buffers ---
+      "space f b": "tab_switcher::Toggle",
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+      "] b": "pane::ActivateNextItem",
+      "space b d": "pane::CloseActiveItem", // LazyVim's close buffer
+      "space b o": "pane::CloseOtherItems",
+
+      // Fallbacks to your old muscle memory
+      "space b n": "pane::ActivateNextItem",
+      "space b p": "pane::ActivatePreviousItem",
+
+      // --- LazyVim: Code / LSP ---
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space c f": "editor::Format",
+      "space c x": "diagnostics::DeployCurrentFile",
+      "space c o": "outline_panel::ToggleFocus",
+      "g r": "editor::FindAllReferences",
+      "[ d": "editor::GoToPreviousDiagnostic", // standard vim
+      "] d": "editor::GoToDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic", // Keeping your error jump fallbacks
+      "] e": "editor::GoToDiagnostic",
+
+      // --- LazyVim: Git / Lazygit ---
+      "space g g": "workspace::ToggleRightDock", // Our "Lazygit" panel
+      "space g b": "git::Blame",
+      "space g h d": "editor::ToggleSelectedDiffHunks",
+      "space g h r": "git::Restore",
+      "[ g": "editor::GoToPreviousHunk",
+      "] g": "editor::GoToHunk",
+
+      // --- LazyVim: Trouble.nvim ---
+      "space x x": "diagnostics::Deploy",
+
+      // --- Terminals & UI ---
+      "space t": "workspace::NewCenterTerminal", // or workspace::ToggleBottomDock for a bottom terminal
+      "space z": "zed::ToggleFullScreen",
+      "space u w": "editor::ToggleSoftWrap", // LazyVim toggle word wrap
+
+      // --- Splits ---
+      "s v": "pane::SplitRight",
+      "s s": "pane::SplitDown",
+
+      // --- Markdown ---
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+
+      // --- Search & Comments ---
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPreviousMatch",
+      "g c": "editor::ToggleComments",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+    },
+  },
+  {
+    // LazyVim: Smart Splits (Ctrl+h/j/k/l to move between panes)
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    // LazyVim: Neo-tree bindings inside the Project Panel
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "l": "project_panel::OpenPermanent",
+      "h": "project_panel::CollapseSelectedEntry",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename", // Standard neo-tree addition
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+    },
+  },
+  {
+    // Tab switcher navigation
+    "context": "TabSwitcher",
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+  {
+    // Context menus (like code actions & autocomplete) taking j/k
+    "context": "ContextMenu || showing_code_actions",
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+    },
+  },
+]

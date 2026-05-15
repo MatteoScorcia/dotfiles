@@ -4,5 +4,7 @@
 .config/tmux/plugins
 .config/nvim/lazy-lock.json
 .wrangler
-zed
+lean-ctx
+gcloud
 qBittorrent
+SmartSetMasterErgo (Mac)

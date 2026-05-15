@@ -6,6 +6,9 @@ elif command -v apt > /dev/null; then
     export PATH=$PATH:/opt/nvim-linux64/bin
 fi
 
+# Google Gemini CLI project id
+export GOOGLE_CLOUD_PROJECT="geminicli-492410"
+
 # Rust/Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -81,3 +84,6 @@ eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# bun completions
+[ -s "/Users/matteo/.bun/_bun" ] && source "/Users/matteo/.bun/_bun"
