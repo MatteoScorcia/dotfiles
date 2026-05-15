@@ -1,0 +1,31 @@
+{
+  "lastChangelogVersion": "0.74.0",
+  "defaultProvider": "openrouter",
+  "defaultModel": "~google/gemini-flash-latest",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    {
+      "source": "npm:@juicesharp/rpiv-ask-user-question",
+      "extensions": [
+        "-index.ts"
+      ]
+    },
+    "npm:@juicesharp/rpiv-btw",
+    "npm:@aliou/pi-guardrails",
+    "npm:@plannotator/pi-extension",
+    "npm:amp-themes",
+    "npm:pi-subagents",
+    "npm:@tmustier/pi-usage-extension",
+    "npm:pi-simplify",
+    "npm:pi-ask-user",
+    "npm:pi-web-access"
+  ],
+  "theme": "amp-dark",
+  "enabledModels": [
+    "opencode-go/deepseek-v4-flash",
+    "openrouter/~google/gemini-flash-latest",
+    "openrouter/~google/gemini-pro-latest"
+  ],
+  "powerline": "compact",
+  "enableInstallTelemetry": false
+}

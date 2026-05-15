@@ -1,21 +1,16 @@
 # 🍄 matteo's dotfiles
 
-A minimalist, aesthetic, and highly productive development environment themed with **Catppuccin Macchiato**. Optimized for macOS (Darwin) but adaptable for Linux.
-
-## 📸 Preview
-
-_(Insert a beautiful screenshot of Ghostty + Neovim + Tmux + Starship here)_
-
 ## 🛠️ The Stack
 
-| Category        | Tool                                 | Description                                                         |
-| :-------------- | :----------------------------------- | :------------------------------------------------------------------ |
-| **Terminal**    | [Ghostty](https://ghostty.org/)      | Fast, native renderer with modern features                          |
-| **Shell**       | [Zsh](https://www.zsh.org/)          | Enhanced with Starship, Autosuggestions, and Zoxide                 |
-| **Editor**      | [Neovim](https://neovim.io/)         | [LazyVim](https://www.lazyvim.org/) distribution with custom tweaks |
-| **Multiplexer** | [Tmux](https://github.com/tmux/tmux) | Managed via TPM (Tmux Plugin Manager)                               |
-| **System**      | [asdf](https://asdf-vm.com/)         | Manage runtimes for Node.js, Go, Python, and more                   |
-| **Utilities**   | eza, bat, delta, fzf                 | Modern replacements for standard Unix tools                         |
+| Category        | Tool                                                    | Description                                                         |
+| :-------------- | :------------------------------------------------------ | :------------------------------------------------------------------ |
+| **Terminal**    | [Ghostty](https://ghostty.org/)                         | Fast, native renderer with modern features                          |
+| **Shell**       | [Zsh](https://www.zsh.org/)                             | Enhanced with Starship, Autosuggestions, and Zoxide                 |
+| **Editor**      | [Neovim](https://neovim.io/)                            | [LazyVim](https://www.lazyvim.org/) distribution with custom tweaks |
+| **Multiplexer** | [Tmux](https://github.com/tmux/tmux)                    | Managed via TPM (Tmux Plugin Manager)                               |
+| **System**      | [asdf](https://asdf-vm.com/)                            | Manage runtimes for Node.js, Go, Python, and more                   |
+| **Agent**       | [pi](https://github.com/earendil-works/pi-coding-agent) | AI coding assistant for the terminal                                |
+| **Utilities**   | eza, bat, delta, fzf                                    | Modern replacements for standard Unix tools                         |
 
 ## 🚀 Quick Start
 
@@ -71,9 +66,8 @@ asdf install python latest
 asdf install golang latest
 ```
 
-## ⌨️ Key Highlights
+**Pi Coding Agent Extensions:**
 
-- **Aliases**: `vim` → `nvim`, `ls` → `eza`, `pn` → `pnpm`.
-- **Zsh**: Integrated with `zoxide` (`cd` on steroids) and `fzf`.
-- **Tmux**: Prefix is bound to `Ctrl + a`. Catppuccin Macchiato status bar on top.
-- **Git**: Configured with `delta` for beautiful, side-by-side diffs.
+```bash
+pi add @juicesharp/rpiv-ask-user-question @juicesharp/rpiv-btw @aliou/pi-guardrails @plannotator/pi-extension amp-themes pi-subagents @tmustier/pi-usage-extension pi-simplify pi-ask-user pi-web-access
+```

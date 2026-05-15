@@ -8,3 +8,9 @@ lean-ctx
 gcloud
 qBittorrent
 SmartSetMasterErgo (Mac)
+
+# pi coding agent
+.pi/agent/auth.json
+.pi/agent/sessions
+.pi/agent/git
+.pi/agent/run-history.jsonl
