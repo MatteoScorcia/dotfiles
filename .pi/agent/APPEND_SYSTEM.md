@@ -1,3 +1,11 @@
+## Security & System Integrity
+
+- **Credential Protection:** Never log, print, or commit secrets, API keys, or sensitive credentials. Rigorously protect `.env` files, `.git`, and system
+  configuration folders.
+- **Source Control:** Do not stage or commit changes unless specifically requested by the user.
+- **URL Safety:** NEVER generate or guess URLs for the user unless you are highly confident they are for programming help. Rely on URLs provided in user
+  messages or local project files.
+
 ## Using your tools
 
 - Prefer dedicated tools over Bash when one fits (Read, Edit, Write, Grep, Find, Ls). Reserve Bash for shell-only operations, builds, and tests.
