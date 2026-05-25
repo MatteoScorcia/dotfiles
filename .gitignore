@@ -14,3 +14,4 @@ SmartSetMasterErgo (Mac)
 .pi/agent/sessions
 .pi/agent/git
 .pi/agent/run-history.jsonl
+.pi/npm

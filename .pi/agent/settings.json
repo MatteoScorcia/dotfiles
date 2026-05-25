@@ -1,17 +1,15 @@
 {
-  "lastChangelogVersion": "0.74.0",
-  "defaultProvider": "openrouter",
-  "defaultModel": "~google/gemini-flash-latest",
+  "lastChangelogVersion": "0.75.5",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "packages": [
     {
       "source": "npm:@juicesharp/rpiv-ask-user-question",
-      "extensions": [
-        "-index.ts"
-      ]
+      "extensions": ["-index.ts"]
     },
     "npm:@juicesharp/rpiv-btw",
-    "npm:@aliou/pi-guardrails",
+    "npm:@gotgenes/pi-permission-system",
     "npm:@plannotator/pi-extension",
     "npm:amp-themes",
     "npm:pi-subagents",
@@ -29,3 +27,4 @@
   "powerline": "compact",
   "enableInstallTelemetry": false
 }
+
