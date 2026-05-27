@@ -37,7 +37,10 @@ mantle = "#1e2030"
 crust = "#181926"
 
 [aws]
-symbol = "  "
+disabled = true
+
+[gcloud]
+disabled = true
 
 [c]
 symbol = " "
@@ -47,6 +50,9 @@ symbol = " "
 
 [directory]
 read_only = " 󰌾"
+
+[cmd_duration]
+disabled = true
 
 [docker_context]
 symbol = " "
