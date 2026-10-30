@@ -87,3 +87,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # bun completions
 [ -s "/Users/matteo/.bun/_bun" ] && source "/Users/matteo/.bun/_bun"
+export PATH="$HOME/.local/bin:$PATH"
